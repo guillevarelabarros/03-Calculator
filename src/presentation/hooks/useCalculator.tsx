@@ -5,6 +5,46 @@ export const useCalculator = () => {
 
   const [ number, setNumber ] = useState( '0' );
 
+
+  // Limpia la calculadora
+  const clean = () => {
+    setNumber('0')
+  }
+
+
+  const toggleSign = () => {
+    if ( number.includes( '-' ) ) {
+      return setNumber(number.replace('-', ''))
+    }
+  }
+
+  // Borrar el último número
+  const deleteOperation = () => {
+    let currentSign = '';
+    let temporalNumber = number;
+
+    if ( number.includes( '-' ) ) {
+      currentSign = '-';
+      temporalNumber = number.substring( 1 );
+      
+      if ( temporalNumber.length > 1 ) {
+        return setNumber(currentSign + temporalNumber.slice(0,-1));
+      }
+      
+      return setNumber('0');
+    }
+
+    // Para números positivos
+    if ( temporalNumber.length > 1 ) {
+      return setNumber(temporalNumber.slice(0, -1));
+    }
+    
+    setNumber('0');
+  }
+
+
+
+
   const buildNumber = ( numberString: string ) => {
 
     if ( number.includes( '.' ) && numberString === '.' ) return;
@@ -48,7 +88,10 @@ export const useCalculator = () => {
     number,
 
     // Methods
-    buildNumber
+    buildNumber,
+    toggleSign,
+    clean,
+    deleteOperation
   };
 };
  
