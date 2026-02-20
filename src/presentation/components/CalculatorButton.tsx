@@ -9,6 +9,7 @@ interface Props {
   color?: string;
   doubleSize?: boolean;
   blackText?: boolean;
+  isActive?: boolean;
   onPress: () => void;
 }
 
@@ -17,13 +18,22 @@ export const CalculatorButton = ( {
   color = colors.darkGray,
   doubleSize = false,
   blackText = false,
+  isActive = false,
   onPress,
   }: Props ) => {
   return (
     <Pressable
       onPress={ ()=> onPress() }
-      style={ ( { pressed } ) => ( { ...styles.button, backgroundColor: color, width: ( doubleSize ) ? 180 : 80, opacity: ( pressed ) ? 0.8 : 1 } ) }>
-      <Text style={ { ...styles.buttonText, color: (blackText) ? 'black' : 'white'  }  }>{label }</Text>
+      style={ ( { pressed } ) => ( { 
+        ...styles.button, 
+        backgroundColor: isActive ? '#FFFFFF' : color, 
+        width: ( doubleSize ) ? 180 : 80, 
+        opacity: ( pressed ) ? 0.8 : 1 
+      } ) }>
+      <Text style={ { 
+        ...styles.buttonText, 
+        color: isActive ? colors.orange : (blackText ? 'black' : 'white')
+      }  }>{label }</Text>
           </Pressable>
   );
 };

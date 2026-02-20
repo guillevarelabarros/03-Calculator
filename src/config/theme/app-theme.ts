@@ -4,6 +4,7 @@ export const colors = {
   darkGray: '#2D2D2D',
   lightGray: '#9B9B9B',
   orange: '#FF9427',
+  activeOrange: '#FFB366',
 
   textPrimary: 'white',
   textSecondary: '#666666',
@@ -61,7 +62,20 @@ export const styles = StyleSheet.create( {
     fontSize: 30,
     color: 'white',
     fontWeight: '300',
-  }
+  },
 
+  historyContainer: {
+    maxHeight: 150,
+    marginBottom: 10,
+    paddingHorizontal: 30,
+  },
+
+  historyItem: {
+    color: colors.textSecondary,
+    fontSize: 14,
+    marginBottom: 4,
+    textAlign: 'right',
+    fontWeight: '300',
+  },
 
 } );
